@@ -1,15 +1,28 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text} from 'react-native';
-import {getFontFamily} from './assets/fonts/helper';
-
+import {TouchableOpacity, View} from 'react-native';
+import Title from './components/Title/Title';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
+import globalStyle from './assets/styles/globalStyle';
+import colors from './constants/colors/colors';
+import {Text} from 'react-native';
 function App() {
   return (
     <View>
-      <Text
-        style={{fontSize: 50, fontFamily: getFontFamily('Inter_18pt', '100')}}>
-        "Hello, World! Welcome to our social media app"
-      </Text>
+      <View style={globalStyle.header}>
+        <Title text="Let's explore" />
+        <TouchableOpacity style={globalStyle.messageIcon}>
+          <FontAwesomeIcon
+            icon={faEnvelope}
+            size={20}
+            color={colors.lightGrey}
+          />
+          <View style={globalStyle.messageNumberConatiner}>
+            <Text style= {globalStyle.messageNumber}>2</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
