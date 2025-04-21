@@ -1,7 +1,8 @@
 import React from 'react';
-import {Image, Text, View} from 'react-native';
-import {ImageSourcePropType} from 'react-native';
+import {Text, View} from 'react-native';
 import style from './styles';
+import {ImageSourcePropType} from 'react-native';
+import UserProfileImage from '../UserProfileImage/UserProfileImage';
 
 interface UserStoryProps {
   firstName: string;
@@ -11,12 +12,7 @@ interface UserStoryProps {
 const UserStory = ({firstName, profileImage}: UserStoryProps) => {
   return (
     <View style={style.storyConatiner}>
-      <View style={style.userImageConatiner}>
-        <Image
-          source={profileImage}
-          style={style.image}
-        />
-      </View>
+      <UserProfileImage profileImage={profileImage} imageDimensions={65} />
       <Text style={style.firstName}>{firstName}</Text>
     </View>
   );

@@ -14,16 +14,7 @@ const style = StyleSheet.create({
     marginTop: 8,
     textAlign: 'center',
   },
-  userImageConatiner: {
-    borderColor: colors.pink,
-    borderWidth: 1,
-    borderRadius: 65,
-    padding: 3,
-  },
-  image: {
-    width: 65,
-    height: 65,
-  },
+  
 });
 
 export default style;
