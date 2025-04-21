@@ -20,18 +20,22 @@ const globalaStyle = StyleSheet.create({
     backgroundColor: colors.pink,
     justifyContent: 'center',
     flexDirection: 'row',
-    alignItems:'center',
-    width:10,
+    alignItems: 'center',
+    width: 10,
     height: 10,
     borderRadius: 10,
-    position:'absolute',
-    right:10,
-    top:12,
+    position: 'absolute',
+    right: 10,
+    top: 12,
   },
   messageNumber: {
     color: colors.white,
     fontSize: 6,
     fontFamily: getFontFamily('Inter', 600),
+  },
+  userStoryConatiner: {
+    marginTop: 20,
+    marginHorizontal: 28,
   },
 });
 
