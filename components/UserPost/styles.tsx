@@ -32,6 +32,13 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#EFF2F6',
   },
+  userPostStats: {marginLeft: 10, flexDirection: 'row'},
+  userPostHeartButton: {flexDirection: 'row', marginLeft: 27},
+  userLikeButton: {marginLeft: 3, color: '#79869F'},
+  userMessageButton: {flexDirection: 'row', marginLeft: 27},
+  userCommentButton: {marginLeft: 3, color: '#79869F'},
+  userBookMarkButton: {flexDirection: 'row', marginLeft: 27},
+  userBookmarkTextButton: {marginLeft: 3, color: '#79869F'},
 });
 
 export default styles;

@@ -51,18 +51,18 @@ const UserPost = ({
       <View style={styles.postImage}>
         <Image source={image} />
       </View>
-      <View style={{marginLeft: 10, flexDirection: 'row'}}>
-        <View style={{flexDirection: 'row', marginLeft: 27}}>
+      <View style={styles.userPostStats}>
+        <View style={styles.userPostHeartButton}>
           <FontAwesomeIcon icon={faHeart} color={'#79869F'} />
-          <Text style={{marginLeft: 3, color: '#79869F'}}>{likes}</Text>
+          <Text style={styles.userLikeButton}>{likes}</Text>
         </View>
-        <View style={{flexDirection: 'row', marginLeft: 27}}>
+        <View style={styles.userMessageButton}>
           <FontAwesomeIcon icon={faMessage} color={'#79869F'} />
-          <Text style={{marginLeft: 3, color: '#79869F'}}>{comments}</Text>
+          <Text style={styles.userCommentButton}>{comments}</Text>
         </View>
-        <View style={{flexDirection: 'row', marginLeft: 27}}>
+        <View style={styles.userBookMarkButton}>
           <FontAwesomeIcon icon={faBookmark} color={'#79869F'} />
-          <Text style={{marginLeft: 3, color: '#79869F'}}>{bookmarks}</Text>
+          <Text style={styles.userBookmarkTextButton}>{bookmarks}</Text>
         </View>
       </View>
     </View>
