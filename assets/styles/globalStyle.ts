@@ -37,6 +37,9 @@ const globalaStyle = StyleSheet.create({
     marginTop: 20,
     marginHorizontal: 28,
   },
+  userPostConatiner: {
+    marginHorizontal: 24,
+  },
 });
 
 export default globalaStyle;
