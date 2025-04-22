@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {FlatList, TouchableOpacity, View} from 'react-native';
 import Title from './components/Title/Title';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
@@ -61,6 +61,26 @@ function App() {
       profileImage: require('./assets/images/default_profile.png'),
     },
   ];
+  const userStoriesPageSize = 4;
+  const [userStoriesCurrentPage, setUserStoriesCurrentPage] = useState(1);
+  const [userStoriesRenderedData, setUserStoriesRenderedData] = useState([]);
+  const [isLoadingUserStories, setIsLoadingUserStories] = useState(false);
+
+  const Pagination = (database, currentPage, pageSize) => {
+    const startIndex = (currentPage - 1) * pageSize;
+    const endIndex = startIndex + pageSize;
+    if (startIndex >= database.length) {
+      return [];
+    }
+    return database.slice(startIndex, endIndex);
+  };
+
+  useEffect(() => {
+    setIsLoadingUserStories(true);
+    const getInitalData = Pagination(userStories, 1, userStoriesPageSize);
+    setUserStoriesRenderedData(getInitalData);
+    setIsLoadingUserStories(false);
+  }, []);
   return (
     <View>
       <View style={globalStyle.header}>
@@ -78,17 +98,37 @@ function App() {
       </View>
       <View style={globalStyle.userStoryConatiner}>
         <FlatList
-          data={userStories}
+          onEndReachedThreshold={0.5}
+          onEndReached={() => {
+            if (isLoadingUserStories) return;
+            setIsLoadingUserStories(true);
+
+            const nextPage = userStoriesCurrentPage + 1;
+            const contentToAppend = Pagination(
+              userStories,
+              nextPage,
+              userStoriesPageSize,
+            );
+
+            if (contentToAppend.length > 0) {
+              setUserStoriesCurrentPage(nextPage);
+              setUserStoriesRenderedData(prev => [...prev, ...contentToAppend]);
+            }
+
+            setIsLoadingUserStories(false);
+          }}
+          data={userStoriesRenderedData}
           horizontal
-          showsHorizontalScrollIndicator = {false}
+          showsHorizontalScrollIndicator={false}
           keyExtractor={item => item.id.toString()}
           renderItem={({item}) => (
             <UserStory
+              key={'userStory' + item.id}
               firstName={item.firstName}
               profileImage={item.profileImage}
             />
           )}
-        /> 
+        />
       </View>
     </View>
   );
