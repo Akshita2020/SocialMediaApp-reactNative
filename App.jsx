@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {FlatList, TouchableOpacity, View} from 'react-native';
+import {FlatList, Switch, TouchableOpacity, View, Platform} from 'react-native';
 import Title from './components/Title/Title';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
@@ -131,6 +131,9 @@ function App() {
   const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
   const [isLoadingPosts, setIsLoadingUserPosts] = useState(false);
 
+  const [isOn, setIsOn] = useState(false);
+  console.log(Platform);
+  console.log('Platform:', Platform.OS);
   const Pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -158,6 +161,7 @@ function App() {
           <>
             <View style={globalStyle.header}>
               <Title text="Let's explore" />
+
               <TouchableOpacity style={globalStyle.messageIcon}>
                 <FontAwesomeIcon
                   icon={faEnvelope}
@@ -168,6 +172,29 @@ function App() {
                   <Text style={globalStyle.messageNumber}>2</Text>
                 </View>
               </TouchableOpacity>
+            </View>
+            <View
+              style={{
+                flex: 1,
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+              }}>
+              <Switch
+                value={isOn}
+                onValueChange={() => setIsOn(true)}
+                style={
+                  Platform.OS === 'android' && {
+                    transform: [{scaleX: 1.5}, {scaleY: 1.5}],
+                  }
+                }
+                ios_backgroundColor={'black'}
+                // trackColor={
+                //   Platform.OS === 'android' && {
+                //     false: 'grey',
+                //     true: 'red',
+                //   }
+                // }
+              />
             </View>
             <View style={globalStyle.userStoryConatiner}>
               <FlatList
