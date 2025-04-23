@@ -3,27 +3,18 @@ import DeviceInfo from 'react-native-device-info';
 
 const {width, height} = Dimensions.get('window');
 
-const scale = (size: number) => {
-  const scaleFactor = width / 375; // Assuming 375 is the base width
-  return Math.round(size * scaleFactor);
-};
-
-const scaledFontSize = (size: number) => {
-  return scale(size);
-};
 const isSmall = width <= 375 && !DeviceInfo.hasNotch();
 
-const guidelinesBaseWidth = () => {
+const guidelineBaseWidth = () => {
   if (isSmall) {
     return 330;
   }
   return 350;
 };
 
-const horizontalScale = (size: number) =>
-  (width / guidelinesBaseWidth()) * size;
+const horizontalScale = (size: number) => (width / guidelineBaseWidth()) * size;
 
-const guidelinesBaseHeight = () => {
+const guidelineBaseHeight = () => {
   if (isSmall) {
     return 550;
   } else if (width > 410) {
@@ -32,17 +23,16 @@ const guidelinesBaseHeight = () => {
   return 680;
 };
 
-const verticalScale = (size: number) =>
-  (height / guidelinesBaseHeight()) * size;
+const verticalScale = (size: number) => (height / guidelineBaseHeight()) * size;
 
-const guidelinesBaseFonts = () => {
+const guidelineBaseFonts = () => {
   if (width > 410) {
     return 430;
   }
   return 400;
 };
 
-const scaledFont = (size: number) =>
-  Math.round(width / guidelinesBaseFonts()) * size;
+const scaleFontSize = (size: number) =>
+  Math.round((width / guidelineBaseFonts()) * size);
 
-export {scaledFontSize, horizontalScale, verticalScale, scaledFont};
+export {horizontalScale, verticalScale, scaleFontSize};

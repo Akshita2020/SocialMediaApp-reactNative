@@ -9,6 +9,7 @@ import colors from './constants/colors/colors';
 import {Text} from 'react-native';
 import UserStory from './components/UserStory/UserStory';
 import UserPost from './components/UserPost/UserPost';
+import {scaleFontSize} from './assets/styles/scaling';
 function App() {
   const userStories = [
     {
@@ -160,7 +161,7 @@ function App() {
               <TouchableOpacity style={globalStyle.messageIcon}>
                 <FontAwesomeIcon
                   icon={faEnvelope}
-                  size={20}
+                  size={scaleFontSize(20)}
                   color={colors.lightGrey}
                 />
                 <View style={globalStyle.messageNumberConatiner}>

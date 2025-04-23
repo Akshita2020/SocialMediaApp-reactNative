@@ -10,6 +10,7 @@ import {
 import {faEllipsisH} from '@fortawesome/free-solid-svg-icons';
 
 import styles from './styles';
+import { horizontalScale, scaleFontSize } from '../../assets/styles/scaling';
 
 interface UserPostProps {
   firstName: string;
@@ -36,7 +37,7 @@ const UserPost = ({
     <View style={styles.userPostConatiner}>
       <View style={styles.user}>
         <View style={styles.userConatiner}>
-          <UserProfileImage profileImage={profileImage} imageDimensions={48} />
+          <UserProfileImage profileImage={profileImage} imageDimensions={horizontalScale(48)} />
 
           <View style={styles.userTextContainer}>
             <Text>
@@ -46,7 +47,7 @@ const UserPost = ({
           </View>
         </View>
 
-        <FontAwesomeIcon icon={faEllipsisH} color={'#79869F'} size={24} />
+        <FontAwesomeIcon icon={faEllipsisH} color={'#79869F'} size={scaleFontSize(24)} />
       </View>
       <View style={styles.postImage}>
         <Image source={image} />
