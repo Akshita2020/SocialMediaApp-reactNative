@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useState, useEffect} from 'react';
-import {FlatList, TouchableOpacity, View, Dimensions} from 'react-native';
+import {FlatList, TouchableOpacity, View} from 'react-native';
 import Title from './components/Title/Title';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEnvelope} from '@fortawesome/free-solid-svg-icons';
@@ -130,9 +130,6 @@ function App() {
   const [userPostsRenderedData, setUserPostsRenderedData] = useState([]);
   const [isLoadingPosts, setIsLoadingUserPosts] = useState(false);
 
-  const [screenData, setScreenData] = useState(Dimensions.get('screen'));
-  console.log(screenData);
-
   const Pagination = (database, currentPage, pageSize) => {
     const startIndex = (currentPage - 1) * pageSize;
     const endIndex = startIndex + pageSize;
@@ -152,24 +149,9 @@ function App() {
     const getInitalDataPost = Pagination(userPost, 1, userPostsPageSize);
     setUserPostsRenderedData(getInitalDataPost);
     setIsLoadingUserPosts(false);
-
-    Dimensions.addEventListener('change', result => {
-      setScreenData(result.screen);
-      console.log(setScreenData);
-    });
   }, []);
   return (
     <View>
-      <View
-        style={{
-          backgroundColor: 'red',
-          width: screenData.width / 2,
-          height: screenData.height / 2,
-        }}>
-        <Text style={{fontSize: screenData.height / 20}}>
-          This box will have half of the screen width and height
-        </Text>
-      </View>
       <FlatList
         ListHeaderComponent={
           <>
