@@ -10,7 +10,7 @@ const Drawer = createDrawerNavigator();
 
 function MainMenuNavigation() {
   return (
-    <Drawer.Navigator screenOptions={{headerShown: false}}>
+    <Drawer.Navigator>
       <Drawer.Screen name={Routes.Home} component={Home} />
       <Drawer.Screen name={Routes.Profile} component={Profile} />
     </Drawer.Navigator>

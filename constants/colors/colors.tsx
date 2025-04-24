@@ -7,6 +7,7 @@ const colors = {
   darkBlue: '#022150',
   black: '#000',
   lightBlack :'#79869F',
+  purple:' #0150EC'
 };
 
 export default colors;
