@@ -5,36 +5,12 @@ import Home from '../screens/Home/Home';
 import Profile from '../screens/Profile/Profile';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
-import {View, Text} from 'react-native';
 import ProfileTabTitle from '../components/ProfileTabTitle/ProfileTabTitle';
+import ProfileTabContent from '../components/ProfileTabContent/ProfileTabContent';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileTabs = createMaterialTopTabNavigator();
-
-const Tab1 = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>This is tab1 </Text>
-    </View>
-  );
-};
-
-const Tab2 = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>This is tab2</Text>
-    </View>
-  );
-};
-
-const Tab3 = () => {
-  return (
-    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-      <Text>This is tab3</Text>
-    </View>
-  );
-};
 
 export const ProfileTabsNavigation = () => {
   return (
@@ -49,26 +25,26 @@ export const ProfileTabsNavigation = () => {
         },
       }}>
       <ProfileTabs.Screen
-        name={'Tab1'}
-        component={Tab1}
+        name={'Photos'}
+        component={ProfileTabContent}
         options={{
           tabBarLabel: ({focused}) => (
-            <ProfileTabTitle title={' Photos'} isFocused={focused} />
+            <ProfileTabTitle title={'Photos'} isFocused={focused} />
           ),
         }}
       />
       <ProfileTabs.Screen
-        name={'Tab2'}
-        component={Tab2}
+        name={'Videos'}
+        component={ProfileTabContent}
         options={{
           tabBarLabel: ({focused}) => (
-            <ProfileTabTitle title={'Vidoes'} isFocused={focused} />
+            <ProfileTabTitle title={'Videos'} isFocused={focused} />
           ),
         }}
       />
       <ProfileTabs.Screen
-        name={'Tab3'}
-        component={Tab3}
+        name={'Saved'}
+        component={ProfileTabContent}
         options={{
           tabBarLabel: ({focused}) => (
             <ProfileTabTitle title={'Saved'} isFocused={focused} />
